@@ -68,21 +68,20 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="text-pink-600">
-          Edit
+        <img src={logo} className="App-logo flex-1" alt="logo" />
+        <p className="text-pink-600 flex-3">
+          Dashboard
           {' '}
-          <code>src/App.js</code>
+          <code>Jamoor</code>
           {' '}
-          and save to reload.
         </p>
         <a
-          className="App-link"
-          href="https://reactjs.org"
+          className="App-link flex-1"
+          href="https://http://jamoor.cloudflareaccess.com/cdn-cgi/access/logout"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Log Out
         </a>
       </header>
       <p className="text-pink-600">
@@ -94,7 +93,7 @@ function App() {
           className="flex-1"
           percent={valV1}
           arcWidth={0.3}
-          formatTextValue={(value) => `${value}°C`}
+          formatTextValue={(value) => `${value}%`}
         />
         <GaugeChart
           id="gauge-chart2"
