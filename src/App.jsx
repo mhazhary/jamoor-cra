@@ -36,18 +36,22 @@ function App() {
   }, []);
   // Client-side Runtime Data Fetching
   const [valV2, setvalV2] = useState();
-  useEffect(() => {
-    // get data from Blynk REST API
-    fetch('https://jamoor.nephertz.dev/api/get/V2', {
-      headers: {
-        Accept: 'application/json',
-      },
-      credentials: 'include',
-    })
-      .then((response) => response.json()) // parse JSON from request
-      .then((resultData) => {
-        setvalV2(resultData);
-      }); // set data for pin V2
+  useEffect(() => { // get data from Blynk REST API
+    const timer = setTimeout(() => {
+      fetch('https://jamoor.nephertz.dev/api/get/V2', {
+        headers: {
+          Accept: 'application/json',
+        },
+        credentials: 'include',
+      })
+        .then((response) => response.json()) // parse JSON from request
+        .then((resultData) => {
+          setvalV2(resultData); // set data for pin V2
+        }, 10000);
+      return () => {
+        clearTimeout(timer);
+      };
+    });
   }, []);
 
   // Client-side Runtime Data Fetching
