@@ -69,6 +69,9 @@ function App() {
         setvalV3(resultData);
       }); // set data for pin V3
   }, []);
+  const valueV1 = Number(valV1) / 100;
+  const valueV2 = Number(valV2) / 100;
+  const valueV3 = Number(valV3) / 100;
   return (
     <div className="App">
       <header className="App-header">
@@ -95,7 +98,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart1"
-            percent={Number(valV1) / 100}
+            percent={valueV1}
             formatTextValue={(value) => `${value}%`}
           />
           <p className="text-white">
@@ -105,7 +108,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart2"
-            percent={Number(valV2) / 100}
+            percent={valueV2}
             formatTextValue={(value) => `${value}°C`}
           />
           <p className="text-white">
@@ -115,7 +118,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart3"
-            percent={0.50}
+            percent={valueV3}
             formatTextValue={(value) => `${value}°C`}
           />
           <p className="text-white">
