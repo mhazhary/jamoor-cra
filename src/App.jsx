@@ -69,9 +69,9 @@ function App() {
         setvalV3(resultData);
       }); // set data for pin V3
   }, []);
-  const valueV1 = Number(valV1) / 100;
-  const valueV2 = Number(valV2) / 100;
-  const valueV3 = Number(valV3) / 100;
+  const valueV1 = parseFloat(valV1) / 100;
+  const valueV2 = parseFloat(valV2) / 100;
+  const valueV3 = parseFloat(valV3) / 100;
   return (
     <div className="App">
       <header className="App-header">
