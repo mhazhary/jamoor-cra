@@ -74,7 +74,7 @@ function App() {
   const valueV2 = parseFloat(valV2) / 100;
   const valueV3 = parseFloat(valV3) / 100;
   const ApexChart = {
-    series: [valueV1],
+    series: [valV1],
     options: {
       chart: {
         height: 350,
@@ -126,7 +126,7 @@ function App() {
             },
             value: {
               formatter(val) {
-                return parseInt(val, 10);
+                return parseFloat(val);
               },
               color: '#111',
               fontSize: '36px',
@@ -186,7 +186,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart1"
-            percent={valueV1 && { valueV1 }}
+            percent={valueV1}
             formatTextValue={(value) => `${value}%`}
           />
           <p className="text-white">
