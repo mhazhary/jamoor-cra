@@ -31,7 +31,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV1(`${resultData}%`);
+        setvalV1(resultData.Number() / 100);
       }); // set data for pin V1
   }, []);
   // Client-side Runtime Data Fetching
@@ -46,7 +46,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV2(`${resultData}°C`);
+        setvalV2(resultData.Number() / 100);
       }); // set data for pin V2
   }, []);
 
@@ -62,7 +62,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV3(`${resultData}°C`);
+        setvalV3(resultData.Number() / 100);
       }); // set data for pin V3
   }, []);
   return (
@@ -92,21 +92,18 @@ function App() {
           id="gauge-chart1"
           className="flex-1"
           percent={valV1}
-          arcWidth={0.3}
           formatTextValue={(value) => `${value}%`}
         />
         <GaugeChart
           id="gauge-chart2"
           className="flex-1"
           percent={valV2}
-          arcWidth={0.3}
           formatTextValue={(value) => `${value}°C`}
         />
         <GaugeChart
           id="gauge-chart3"
           className="flex-1"
           percent={valV3}
-          arcWidth={0.3}
           formatTextValue={(value) => `${value}°C`}
         />
       </div>
