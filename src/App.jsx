@@ -20,7 +20,7 @@ function App() {
       }); // set data for hardware status
   }, []);
   // Client-side Runtime Data Fetching
-  const [valV1, setvalV1] = useState('Fetching data');
+  const [valV1, setvalV1] = useState();
   useEffect(() => {
     // get data from Blynk REST API
     fetch('https://jamoor.nephertz.dev/api/get/V1', {
@@ -35,7 +35,7 @@ function App() {
       }); // set data for pin V1
   }, []);
   // Client-side Runtime Data Fetching
-  const [valV2, setvalV2] = useState('Fetching data');
+  const [valV2, setvalV2] = useState();
   useEffect(() => {
     // get data from Blynk REST API
     fetch('https://jamoor.nephertz.dev/api/get/V2', {
@@ -51,7 +51,7 @@ function App() {
   }, []);
 
   // Client-side Runtime Data Fetching
-  const [valV3, setvalV3] = useState('Fetching data');
+  const [valV3, setvalV3] = useState();
   useEffect(() => {
     // get data from Blynk REST API
     fetch('https://jamoor.nephertz.dev/api/get/V3', {
