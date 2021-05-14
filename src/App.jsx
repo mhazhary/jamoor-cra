@@ -115,7 +115,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart3"
-            percent={Number(valV3) / 100}
+            percent={0.50}
             formatTextValue={(value) => `${value}°C`}
           />
           <p className="text-white">
