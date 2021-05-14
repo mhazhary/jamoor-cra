@@ -107,6 +107,15 @@ function App() {
           formatTextValue={(value) => `${value}°C`}
         />
       </div>
+      <p className="text-pink-600">
+        {valV1}
+      </p>
+      <p className="text-pink-600">
+        {valV2}
+      </p>
+      <p className="text-pink-600">
+        {valV3}
+      </p>
     </div>
   );
 }
