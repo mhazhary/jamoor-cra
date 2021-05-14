@@ -119,11 +119,6 @@ function App() {
               color: '#888',
               fontSize: '17px',
             },
-            value: {
-              color: '#FFF',
-              fontSize: '36px',
-              show: true,
-            },
           },
         },
       },
@@ -154,8 +149,11 @@ function App() {
           dataLabels: {
             value: {
               formatter(val) {
-                return `${parseFloat(val)}%`;
+                return parseFloat(val);
               },
+              color: '#FFF',
+              fontSize: '36px',
+              show: true,
             },
           },
         },
@@ -171,8 +169,11 @@ function App() {
           dataLabels: {
             value: {
               formatter(val) {
-                return `${parseFloat(val)}°C`;
+                return parseFloat(val);
               },
+              color: '#FFF',
+              fontSize: '36px',
+              show: true,
             },
           },
         },
@@ -188,8 +189,11 @@ function App() {
           dataLabels: {
             value: {
               formatter(val) {
-                return `${parseFloat(val)}°C`;
+                return parseFloat(val);
               },
+              color: '#FFF',
+              fontSize: '36px',
+              show: true,
             },
           },
         },
