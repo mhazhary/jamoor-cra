@@ -149,7 +149,7 @@ function App() {
           dataLabels: {
             value: {
               formatter(val) {
-                return parseFloat(val);
+                return `${parseFloat(val)}%`;
               },
               color: '#FFF',
               fontSize: '36px',
@@ -169,7 +169,7 @@ function App() {
           dataLabels: {
             value: {
               formatter(val) {
-                return parseFloat(val);
+                return `${parseFloat(val)}°C`;
               },
               color: '#FFF',
               fontSize: '36px',
@@ -189,7 +189,7 @@ function App() {
           dataLabels: {
             value: {
               formatter(val) {
-                return parseFloat(val);
+                return `${parseFloat(val)}°C`;
               },
               color: '#FFF',
               fontSize: '36px',
