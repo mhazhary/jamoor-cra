@@ -88,24 +88,36 @@ function App() {
         {isHardwareConnected}
       </p>
       <div className="md:grid grid-cols-3 bg-gray-900">
-        <GaugeChart
-          id="gauge-chart1"
-          className="flex-1"
-          percent={valV1}
-          formatTextValue={(value) => `${value}%`}
-        />
-        <GaugeChart
-          id="gauge-chart2"
-          className="flex-1"
-          percent={valV2}
-          formatTextValue={(value) => `${value}°C`}
-        />
-        <GaugeChart
-          id="gauge-chart3"
-          className="flex-1"
-          percent={valV3}
-          formatTextValue={(value) => `${value}°C`}
-        />
+        <div className="flex-1">
+          <GaugeChart
+            id="gauge-chart1"
+            percent={valV1}
+            formatTextValue={(value) => `${value}%`}
+          />
+          <p className="text-white">
+            Kelembapan
+          </p>
+        </div>
+        <div className="flex-1">
+          <GaugeChart
+            id="gauge-chart2"
+            percent={valV2}
+            formatTextValue={(value) => `${value}°C`}
+          />
+          <p className="text-white">
+            Temperatur
+          </p>
+        </div>
+        <div className="flex-1">
+          <GaugeChart
+            id="gauge-chart3"
+            percent={valV3}
+            formatTextValue={(value) => `${value}°C`}
+          />
+          <p className="text-white">
+            Temperatur Tangki
+          </p>
+        </div>
       </div>
       <p className="text-pink-600">
         {valV1}
