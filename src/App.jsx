@@ -31,7 +31,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV1(Number(resultData) / 100);
+        setvalV1(resultData);
       }); // set data for pin V1
   }, []);
   // Client-side Runtime Data Fetching
@@ -46,7 +46,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV2(Number(resultData) / 100);
+        setvalV2(resultData);
       }); // set data for pin V2
   }, []);
 
@@ -62,7 +62,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV3(Number(resultData) / 100);
+        setvalV3(resultData);
       }); // set data for pin V3
   }, []);
   return (
@@ -91,7 +91,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart1"
-            percent={valV1}
+            percent={Number(valV1) / 100}
             formatTextValue={(value) => `${value}%`}
           />
           <p className="text-white">
@@ -101,7 +101,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart2"
-            percent={valV2}
+            percent={Number(valV2) / 100}
             formatTextValue={(value) => `${value}°C`}
           />
           <p className="text-white">
@@ -111,7 +111,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart3"
-            percent={valV3}
+            percent={Number(valV3) / 100}
             formatTextValue={(value) => `${value}°C`}
           />
           <p className="text-white">
