@@ -98,7 +98,7 @@ function App() {
         <div className="flex-1">
           <GaugeChart
             id="gauge-chart1"
-            percent={valueV1}
+            percent={valueV1 && { valueV1 }}
             formatTextValue={(value) => `${value}%`}
           />
           <p className="text-white">
