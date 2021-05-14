@@ -120,9 +120,6 @@ function App() {
               fontSize: '17px',
             },
             value: {
-              formatter(val) {
-                return parseFloat(val);
-              },
               color: '#111',
               fontSize: '36px',
               show: true,
@@ -151,14 +148,53 @@ function App() {
   const ApexChart1 = {
     ...ApexChart.options,
     ...{ labels: ['Humidity'] },
+    ...{
+      plotOptions: {
+        radialBar: {
+          dataLabels: {
+            value: {
+              formatter(val) {
+                return `${parseFloat(val)}%`;
+              },
+            },
+          },
+        },
+      },
+    },
   };
   const ApexChart2 = {
     ...ApexChart.options,
     ...{ labels: ['Temperature'] },
+    ...{
+      plotOptions: {
+        radialBar: {
+          dataLabels: {
+            value: {
+              formatter(val) {
+                return `${parseFloat(val)}°C`;
+              },
+            },
+          },
+        },
+      },
+    },
   };
   const ApexChart3 = {
     ...ApexChart.options,
     ...{ labels: ['Water Tank'] },
+    ...{
+      plotOptions: {
+        radialBar: {
+          dataLabels: {
+            value: {
+              formatter(val) {
+                return `${parseFloat(val)}°C`;
+              },
+            },
+          },
+        },
+      },
+    },
   };
   return (
     <div className="App">
@@ -182,7 +218,7 @@ function App() {
       <p className="text-pink-600">
         {isHardwareConnected}
       </p>
-      <div className="md:grid grid-cols-3 bg-gray-900">
+      <div className="md:grid grid-cols-3 bg-gray-400">
         <div className="flex-1">
           <div id="chart1">
             <ReactApexChart
@@ -223,15 +259,6 @@ function App() {
           </p>
         </div>
       </div>
-      <p className="text-pink-600">
-        {valV1}
-      </p>
-      <p className="text-pink-600">
-        {valV2}
-      </p>
-      <p className="text-pink-600">
-        {valV3}
-      </p>
     </div>
   );
 }
