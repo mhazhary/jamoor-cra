@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import GaugeChart from 'react-gauge-chart';
 import ReactApexChart from 'react-apexcharts';
 import logo from './logo.svg';
 import './App.css';
@@ -70,11 +69,7 @@ function App() {
         setvalV3(resultData);
       }); // set data for pin V3
   }, []);
-  const valueV1 = parseFloat(valV1) / 100;
-  const valueV2 = parseFloat(valV2) / 100;
-  const valueV3 = parseFloat(valV3) / 100;
   const ApexChart = {
-    series: [valV1],
     options: {
       chart: {
         height: 350,
@@ -151,9 +146,19 @@ function App() {
       stroke: {
         lineCap: 'round',
       },
-      labels: ['Percent'],
     },
-
+  };
+  const ApexChart1 = {
+    ...ApexChart.options,
+    ...{ labels: ['Humidity'] },
+  };
+  const ApexChart2 = {
+    ...ApexChart.options,
+    ...{ labels: ['Temperature'] },
+  };
+  const ApexChart3 = {
+    ...ApexChart.options,
+    ...{ labels: ['Water Tank'] },
   };
   return (
     <div className="App">
@@ -177,38 +182,42 @@ function App() {
       <p className="text-pink-600">
         {isHardwareConnected}
       </p>
-      <div id="card">
-        <div id="chart">
-          <ReactApexChart options={ApexChart.options} series={ApexChart.series} type="radialBar" height={350} />
-        </div>
-      </div>
       <div className="md:grid grid-cols-3 bg-gray-900">
         <div className="flex-1">
-          <GaugeChart
-            id="gauge-chart1"
-            percent={valueV1}
-            formatTextValue={(value) => `${value}%`}
-          />
+          <div id="chart1">
+            <ReactApexChart
+              options={ApexChart1}
+              series={valV1}
+              type="radialBar"
+              height={350}
+            />
+          </div>
           <p className="text-white">
             Kelembapan
           </p>
         </div>
         <div className="flex-1">
-          <GaugeChart
-            id="gauge-chart2"
-            percent={valueV2}
-            formatTextValue={(value) => `${value}°C`}
-          />
+          <div id="chart2">
+            <ReactApexChart
+              options={ApexChart2}
+              series={valV2}
+              type="radialBar"
+              height={350}
+            />
+          </div>
           <p className="text-white">
             Temperatur
           </p>
         </div>
         <div className="flex-1">
-          <GaugeChart
-            id="gauge-chart3"
-            percent={valueV3}
-            formatTextValue={(value) => `${value}°C`}
-          />
+          <div id="chart3">
+            <ReactApexChart
+              options={ApexChart3}
+              series={valV3}
+              type="radialBar"
+              height={350}
+            />
+          </div>
           <p className="text-white">
             Temperatur Tangki
           </p>
