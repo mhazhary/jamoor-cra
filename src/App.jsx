@@ -120,7 +120,7 @@ function App() {
               fontSize: '17px',
             },
             value: {
-              color: '#111',
+              color: '#FFF',
               fontSize: '36px',
               show: true,
             },
@@ -198,7 +198,7 @@ function App() {
   };
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header bg-gray-900">
         <img src={logo} className="App-logo flex-1" alt="logo" />
         <p className="text-pink-600 flex-3">
           Dashboard
