@@ -31,7 +31,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV1(resultData.Number() / 100);
+        setvalV1(Number(resultData) / 100);
       }); // set data for pin V1
   }, []);
   // Client-side Runtime Data Fetching
@@ -46,7 +46,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV2(resultData.Number() / 100);
+        setvalV2(Number(resultData) / 100);
       }); // set data for pin V2
   }, []);
 
@@ -62,7 +62,7 @@ function App() {
     })
       .then((response) => response.json()) // parse JSON from request
       .then((resultData) => {
-        setvalV3(resultData.Number() / 100);
+        setvalV3(Number(resultData) / 100);
       }); // set data for pin V3
   }, []);
   return (
@@ -77,7 +77,7 @@ function App() {
         </p>
         <a
           className="App-link flex-1"
-          href="https://http://jamoor.cloudflareaccess.com/cdn-cgi/access/logout"
+          href="https://jamoor.cloudflareaccess.com/cdn-cgi/access/logout"
           target="_blank"
           rel="noopener noreferrer"
         >
