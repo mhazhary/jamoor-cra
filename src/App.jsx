@@ -218,7 +218,7 @@ function App() {
       <p className="text-pink-600">
         {isHardwareConnected}
       </p>
-      <div className="md:grid grid-cols-3 bg-gray-400">
+      <div className="md:grid grid-cols-3 bg-gray-900">
         <div className="flex-1">
           <div id="chart1">
             <ReactApexChart
