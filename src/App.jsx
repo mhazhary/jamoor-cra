@@ -20,7 +20,7 @@ function App() {
       }); // set data for hardware status
   }, []);
   // Client-side Runtime Data Fetching
-  const [valV1, setvalV1] = useState();
+  const [valV1, setvalV1] = useState(0);
   useEffect(() => {
     // get data from Blynk REST API
     fetch('https://jamoor.nephertz.dev/api/get/V1', {
@@ -35,7 +35,7 @@ function App() {
       }); // set data for pin V1
   }, []);
   // Client-side Runtime Data Fetching
-  const [valV2, setvalV2] = useState();
+  const [valV2, setvalV2] = useState(0);
   useEffect(() => { // get data from Blynk REST API
     const timer = setTimeout(() => {
       fetch('https://jamoor.nephertz.dev/api/get/V2', {
@@ -44,7 +44,7 @@ function App() {
         },
         credentials: 'include',
       })
-        .then((response) => response.json()) // parse JSON from request
+        .then((response) => response.json(0)) // parse JSON from request
         .then((resultData) => {
           setvalV2(resultData); // set data for pin V2
         }, 10000);
@@ -55,7 +55,7 @@ function App() {
   }, []);
 
   // Client-side Runtime Data Fetching
-  const [valV3, setvalV3] = useState();
+  const [valV3, setvalV3] = useState(0);
   useEffect(() => {
     // get data from Blynk REST API
     fetch('https://jamoor.nephertz.dev/api/get/V3', {
@@ -70,136 +70,248 @@ function App() {
       }); // set data for pin V3
   }, []);
   const ApexChart = {
-    options: {
-      chart: {
-        height: 350,
-        type: 'radialBar',
-        toolbar: {
-          show: true,
-        },
-      },
-      plotOptions: {
-        radialBar: {
-          startAngle: -135,
-          endAngle: 225,
-          hollow: {
-            margin: 0,
-            size: '70%',
-            background: '#fff',
-            image: undefined,
-            imageOffsetX: 0,
-            imageOffsetY: 0,
-            position: 'front',
-            dropShadow: {
-              enabled: true,
-              top: 3,
-              left: 0,
-              blur: 4,
-              opacity: 0.24,
-            },
-          },
-          track: {
-            background: '#fff',
-            strokeWidth: '67%',
-            margin: 0, // margin is in pixels
-            dropShadow: {
-              enabled: true,
-              top: -3,
-              left: 0,
-              blur: 4,
-              opacity: 0.35,
-            },
-          },
-
-          dataLabels: {
+    humidity: {
+      series: [valV1],
+      options: {
+        chart: {
+          height: 350,
+          type: 'radialBar',
+          toolbar: {
             show: true,
-            name: {
-              offsetY: -10,
-              show: true,
-              color: '#888',
-              fontSize: '17px',
-            },
           },
         },
-      },
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shade: 'dark',
-          type: 'horizontal',
-          shadeIntensity: 0.5,
-          gradientToColors: ['#ABE5A1'],
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 100],
-        },
-      },
-      stroke: {
-        lineCap: 'round',
-      },
-    },
-  };
-  const ApexChart1 = {
-    ...ApexChart.options,
-    ...{ labels: ['Humidity'] },
-    ...{
-      plotOptions: {
-        radialBar: {
-          dataLabels: {
-            value: {
-              formatter(val) {
-                return `${parseFloat(val)}%`;
+        plotOptions: {
+          radialBar: {
+            startAngle: -135,
+            endAngle: 225,
+            hollow: {
+              margin: 0,
+              size: '70%',
+              background: '#fff',
+              image: undefined,
+              imageOffsetX: 0,
+              imageOffsetY: 0,
+              position: 'front',
+              dropShadow: {
+                enabled: true,
+                top: 3,
+                left: 0,
+                blur: 4,
+                opacity: 0.24,
               },
-              color: '#FFF',
-              fontSize: '36px',
-              show: true,
             },
-          },
-        },
-      },
-    },
-  };
-  const ApexChart2 = {
-    ...ApexChart.options,
-    ...{ labels: ['Temperature'] },
-    ...{
-      plotOptions: {
-        radialBar: {
-          dataLabels: {
-            value: {
-              formatter(val) {
-                return `${parseFloat(val)}°C`;
+            track: {
+              background: '#fff',
+              strokeWidth: '67%',
+              margin: 0, // margin is in pixels
+              dropShadow: {
+                enabled: true,
+                top: -3,
+                left: 0,
+                blur: 4,
+                opacity: 0.35,
               },
-              color: '#FFF',
-              fontSize: '36px',
-              show: true,
             },
-          },
-        },
-      },
-    },
-  };
-  const ApexChart3 = {
-    ...ApexChart.options,
-    ...{ labels: ['Water Tank'] },
-    ...{
-      plotOptions: {
-        radialBar: {
-          dataLabels: {
-            value: {
-              formatter(val) {
-                return `${parseFloat(val)}°C`;
+            dataLabels: {
+              show: true,
+              name: {
+                offsetY: -10,
+                show: true,
+                color: '#888',
+                fontSize: '17px',
               },
-              color: '#FFF',
-              fontSize: '36px',
-              show: true,
+              value: {
+                formatter(val) {
+                  return `${parseFloat(val)}%`;
+                },
+                color: '#111',
+                fontSize: '36px',
+                show: true,
+              },
             },
           },
         },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'dark',
+            type: 'horizontal',
+            shadeIntensity: 0.5,
+            gradientToColors: ['#ABE5A1'],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100],
+          },
+        },
+        stroke: {
+          lineCap: 'round',
+        },
+        labels: ['Humidity'],
+      },
+    },
+    temperature: {
+      series: [valV2],
+      options: {
+        chart: {
+          height: 350,
+          type: 'radialBar',
+          toolbar: {
+            show: true,
+          },
+        },
+        plotOptions: {
+          radialBar: {
+            startAngle: -135,
+            endAngle: 225,
+            hollow: {
+              margin: 0,
+              size: '70%',
+              background: '#fff',
+              image: undefined,
+              imageOffsetX: 0,
+              imageOffsetY: 0,
+              position: 'front',
+              dropShadow: {
+                enabled: true,
+                top: 3,
+                left: 0,
+                blur: 4,
+                opacity: 0.24,
+              },
+            },
+            track: {
+              background: '#fff',
+              strokeWidth: '67%',
+              margin: 0, // margin is in pixels
+              dropShadow: {
+                enabled: true,
+                top: -3,
+                left: 0,
+                blur: 4,
+                opacity: 0.35,
+              },
+            },
+            dataLabels: {
+              show: true,
+              name: {
+                offsetY: -10,
+                show: true,
+                color: '#888',
+                fontSize: '17px',
+              },
+              value: {
+                formatter(val) {
+                  return `${parseFloat(val)}°C`;
+                },
+                color: '#111',
+                fontSize: '36px',
+                show: true,
+              },
+            },
+          },
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'dark',
+            type: 'horizontal',
+            shadeIntensity: 0.5,
+            gradientToColors: ['#ABE5A1'],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100],
+          },
+        },
+        stroke: {
+          lineCap: 'round',
+        },
+        labels: ['Temperature'],
+      },
+    },
+    watertank: {
+      series: [valV3],
+      options: {
+        chart: {
+          height: 350,
+          type: 'radialBar',
+          toolbar: {
+            show: true,
+          },
+        },
+        plotOptions: {
+          radialBar: {
+            startAngle: -135,
+            endAngle: 225,
+            hollow: {
+              margin: 0,
+              size: '70%',
+              background: '#fff',
+              image: undefined,
+              imageOffsetX: 0,
+              imageOffsetY: 0,
+              position: 'front',
+              dropShadow: {
+                enabled: true,
+                top: 3,
+                left: 0,
+                blur: 4,
+                opacity: 0.24,
+              },
+            },
+            track: {
+              background: '#fff',
+              strokeWidth: '67%',
+              margin: 0, // margin is in pixels
+              dropShadow: {
+                enabled: true,
+                top: -3,
+                left: 0,
+                blur: 4,
+                opacity: 0.35,
+              },
+            },
+            dataLabels: {
+              show: true,
+              name: {
+                offsetY: -10,
+                show: true,
+                color: '#888',
+                fontSize: '17px',
+              },
+              value: {
+                formatter(val) {
+                  return `${parseFloat(val)}°C`;
+                },
+                color: '#111',
+                fontSize: '36px',
+                show: true,
+              },
+            },
+          },
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'dark',
+            type: 'horizontal',
+            shadeIntensity: 0.5,
+            gradientToColors: ['#ABE5A1'],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100],
+          },
+        },
+        stroke: {
+          lineCap: 'round',
+        },
+        labels: ['Water Tank'],
       },
     },
   };
+
   return (
     <div className="App">
       <header className="App-header bg-gray-900">
@@ -213,21 +325,23 @@ function App() {
         <a
           className="App-link flex-1"
           href="https://jamoor.cloudflareaccess.com/cdn-cgi/access/logout"
-          target="_blank"
+          target="_self"
           rel="noopener noreferrer"
         >
           Log Out
         </a>
       </header>
-      <p className="text-pink-600">
+      <h1 className="bg-gray-600 text-white text-lg">
+        Hardware status:
+        {' '}
         {isHardwareConnected}
-      </p>
+      </h1>
       <div className="md:grid grid-cols-3 bg-gray-900">
         <div className="flex-1">
           <div id="chart1">
             <ReactApexChart
-              options={ApexChart1}
-              series={valV1}
+              options={ApexChart.humidity.options}
+              series={ApexChart.humidity.series}
               type="radialBar"
               height={350}
             />
@@ -239,8 +353,8 @@ function App() {
         <div className="flex-1">
           <div id="chart2">
             <ReactApexChart
-              options={ApexChart2}
-              series={valV2}
+              options={ApexChart.temperature.options}
+              series={ApexChart.temperature.series}
               type="radialBar"
               height={350}
             />
@@ -252,8 +366,8 @@ function App() {
         <div className="flex-1">
           <div id="chart3">
             <ReactApexChart
-              options={ApexChart3}
-              series={valV3}
+              options={ApexChart.watertank.options}
+              series={ApexChart.watertank.series}
               type="radialBar"
               height={350}
             />
