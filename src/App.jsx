@@ -82,8 +82,6 @@ function App() {
         },
         plotOptions: {
           radialBar: {
-            startAngle: -135,
-            endAngle: 225,
             hollow: {
               margin: 0,
               size: '70%',
@@ -162,8 +160,6 @@ function App() {
         },
         plotOptions: {
           radialBar: {
-            startAngle: -135,
-            endAngle: 225,
             hollow: {
               margin: 0,
               size: '70%',
@@ -242,8 +238,6 @@ function App() {
         },
         plotOptions: {
           radialBar: {
-            startAngle: -135,
-            endAngle: 225,
             hollow: {
               margin: 0,
               size: '70%',
