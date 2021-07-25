@@ -19,25 +19,33 @@ function App() {
         sethardwareStatus(resultData === 'true' ? 'ONLINE' : 'OFFLINE');
       }); // set data for hardware status
   }, []);
+
   // Client-side Runtime Data Fetching
   const [valV1, setvalV1] = useState(0);
   useEffect(() => {
-    // get data from Blynk REST API
-    fetch('https://jamoor.nephertz.dev/api/get/V1', {
-      headers: {
-        Accept: 'application/json',
-      },
-      credentials: 'include',
-    })
-      .then((response) => response.json()) // parse JSON from request
-      .then((resultData) => {
-        setvalV1(resultData);
-      }); // set data for pin V1
+    const timer = setTimeout(() => {
+      // get data from Blynk REST API
+      fetch('https://jamoor.nephertz.dev/api/get/V1', {
+        headers: {
+          Accept: 'application/json',
+        },
+        credentials: 'include',
+      })
+        .then((response) => response.json(0)) // parse JSON from request
+        .then((resultData) => {
+          setvalV1(resultData); // set data for pin V1
+        }, 10000);
+      return () => {
+        clearTimeout(timer);
+      };
+    });
   }, []);
+
   // Client-side Runtime Data Fetching
   const [valV2, setvalV2] = useState(0);
-  useEffect(() => { // get data from Blynk REST API
+  useEffect(() => {
     const timer = setTimeout(() => {
+      // get data from Blynk REST API
       fetch('https://jamoor.nephertz.dev/api/get/V2', {
         headers: {
           Accept: 'application/json',
@@ -57,18 +65,24 @@ function App() {
   // Client-side Runtime Data Fetching
   const [valV3, setvalV3] = useState(0);
   useEffect(() => {
-    // get data from Blynk REST API
-    fetch('https://jamoor.nephertz.dev/api/get/V3', {
-      headers: {
-        Accept: 'application/json',
-      },
-      credentials: 'include',
-    })
-      .then((response) => response.json()) // parse JSON from request
-      .then((resultData) => {
-        setvalV3(resultData);
-      }); // set data for pin V3
+    const timer = setTimeout(() => {
+      // get data from Blynk REST API
+      fetch('https://jamoor.nephertz.dev/api/get/V3', {
+        headers: {
+          Accept: 'application/json',
+        },
+        credentials: 'include',
+      })
+        .then((response) => response.json(0)) // parse JSON from request
+        .then((resultData) => {
+          setvalV3(resultData); // set data for pin V3
+        }, 10000);
+      return () => {
+        clearTimeout(timer);
+      };
+    });
   }, []);
+
   const ApexChart = {
     humidity: {
       series: [valV1],
